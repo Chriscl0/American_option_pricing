@@ -357,7 +357,7 @@ class NN:
 class simulation_NN:
     def __init__(self):
         """
-        hej
+        Class for simulation of GBM and Heston
         """
         
     def payoffs(self, option_type, x, K):    
