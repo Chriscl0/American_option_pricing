@@ -472,7 +472,7 @@ class simulation_NN:
 class NN_decision:
     def __init__(self):
         """
-        hej
+        Initialization of the decision class.
         """
 
     def decision_backward(self, ex_conti, ex_now, cash_flow, upper_bound):
@@ -586,7 +586,7 @@ class NN_decision:
 class prep_sim:
     def __init__(self):
         """
-        hej
+        Initialization of simulation class
         """
     def prep_kwargs(self, S0, r, sigma, T, my_device, my_option, my_training):
         """
