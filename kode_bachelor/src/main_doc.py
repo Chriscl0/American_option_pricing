@@ -556,7 +556,7 @@ generator = torch.Generator().manual_seed(torch.seed())
 use_cuda = torch.cuda.is_available()
 my_device = torch.device("cuda:0" if use_cuda else "cpu")
 
-# American put option 
+# American put option using GBM
 S0 = 36  # S0 = 100 - Heston
 sigma = 0.4 # V0 = 0.01
 T = 1 # T = 1
@@ -571,8 +571,7 @@ my_option = {
 }
 
 # Heston
-#my_option = {'N_step': 1, 
-#             'N_stock': 1, 
+#my_option = {'N_step': 50, 
 #             'strike': 100, 
 #             'r': torch.tensor(0.1, device = my_device), 
 #             'sigma': 0.2, 'kappa': 2, 
@@ -585,7 +584,7 @@ my_training = {'N_path': int(10e5),
                'N_test': int(1e6), 
                'batch_size': int(1e4), 
                'N_neuron_1': [20, 20], 
-               'N_neuron_2': [50, 50], 
+               'N_neuron_2': [20, 20], 
                'val': 0.1,
                'patience': 5, 
                'max_epoch':100} 
