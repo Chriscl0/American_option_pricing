@@ -255,17 +255,16 @@ class NN:
         cash_flow_train, upper_bound_train = (torch.clone(Exe[:, -1]) for _ in range(2))    
         Epochs = np.empty(kwargs['total_step'])
         for i in range(kwargs['N_step']-1, -1, -1):
-            for j in range(kwargs['sub_step']-1, -1, -1):
-                step = i*kwargs['sub_step']+j
-                cash_flow_train *= kwargs['discount']
+            step = i*kwargs['sub_step']
+            cash_flow_train *= kwargs['discount']
                 
-                # Heston
-                # X = torch.cat((Stock[:,step,:], Vol[:,step,:], dW_S[:, step, :], dW_S[:, step, :]**2-1,
-                #               dW_V[:, step, :], dW_V[:, step, :]**2-1), dim=1) 
-                X = torch.cat((Stock[:,step,:], dW[:, step, :], dW[:, step, :]**2-1), dim=1)
-                conti, mg_pred, Epochs[step] = self.train_model(i, j, X, cash_flow_train, pathname, **kwargs)
-                upper_bound_train = upper_bound_train*kwargs['discount']-mg_pred
-                cash_flow_train -= mg_pred
+            # Heston
+            # X = torch.cat((Stock[:,step,:], Vol[:,step,:], dW_S[:, step, :], dW_S[:, step, :]**2-1,
+            #               dW_V[:, step, :], dW_V[:, step, :]**2-1), dim=1) 
+            X = torch.cat((Stock[:,step,:], dW[:, step, :], dW[:, step, :]**2-1), dim=1)
+            conti, mg_pred, Epochs[step] = self.train_model(i, 0, X, cash_flow_train, pathname, **kwargs)
+            upper_bound_train = upper_bound_train*kwargs['discount']-mg_pred
+            cash_flow_train -= mg_pred
             
             cash_flow_train, upper_bound_train = NN_decision().decision_backward(
                 conti, Exe[:, i], cash_flow_train, upper_bound_train)
