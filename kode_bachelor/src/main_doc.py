@@ -580,9 +580,9 @@ my_option = {
 #             'option_type': "put", 
 #              'option_name': 'Heston'}
 
-my_training = {'N_path': int(10e5), 
-               'N_test': int(1e6), 
-               'batch_size': int(1e4), 
+my_training = {'N_path': int(10**5), 
+               'N_test': int(10**5), 
+               'batch_size': int(10**3), 
                'N_neuron_1': [20, 20], 
                'N_neuron_2': [20, 20], 
                'val': 0.1,
@@ -590,9 +590,9 @@ my_training = {'N_path': int(10e5),
                'max_epoch':100} 
 
 # Heston
-#my_training = {'N_path': int(10e5), 
-#               'N_test': int(1e6), 
-#               'batch_size': int(1e4), 
+#my_training = {'N_path': int(10**5), 
+#               'N_test': int(10**5), 
+#               'batch_size': int(10**3), 
 #               'N_neuron_1': [50, 25], 
 #               'N_neuron_2': [50, 50], 
 #               'val': 0.1,
