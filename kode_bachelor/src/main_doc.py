@@ -96,7 +96,7 @@ n = 50 # number of steps
 num_paths = 100000 # Number of simulation paths
 Method = "LSM" # Method used
 Reg_Method = "Polynomium" # Polynomium type
-option_type="Put" # Tption type
+option_type="Put" # option type
 M = 3 # Polynomium Degree
 num_simulations = 100 # Number of simulation for each parameter combination
 
@@ -222,9 +222,9 @@ print(results_lsm_dual_df)
 # =========================================================================== #
 
 r = 0.06  # Drift (average return per unit time)
-n = 2  # number of steps
-num_paths = 100  # Number of simulation paths for each batch
-num_simulations = 1  # Number of simulations to average
+n = 50  # number of steps
+num_paths = 100000  # Number of simulation paths for each batch
+num_simulations = 100  # Number of simulations to average
 
 option_prices_lsm = []
 
@@ -268,9 +268,6 @@ error_lsm_is = 10000*(df[df['Method']== 'LSM']['LSM/Delta LSM IS'].values-result
 error_lsm_oos =  10000*(df[df['Method']== 'LSM']['LSM/Delta LSM OOS'].values-results_ifd_df['Benchmark'].values)/results_ifd_df['Benchmark'].values
 error_delta_lsm_is = 10000*(df[df['Method']== 'Delta_LSM']['LSM/Delta LSM IS'].values-results_ifd_df['Benchmark'].values)/results_ifd_df['Benchmark'].values
 error_delta_lsm_oos = 10000*(df[df['Method']== 'Delta_LSM']['LSM/Delta LSM OOS'].values-results_ifd_df['Benchmark'].values)/results_ifd_df['Benchmark'].values
-
-
-
 
 plt.figure(figsize=(10,6))
 #plt.plot(range(1,21), error_lsm_is, label = 'LSM IS', color = 'red', linestyle = '-')
