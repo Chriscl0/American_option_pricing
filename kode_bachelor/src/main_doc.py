@@ -547,7 +547,8 @@ plt.show()
 # =========================================================================== #
 #                        ML for Primal and Dual (Table 5)                     #   
 #              This code needs to be ran seperatly from the others            #
-#                      The code is both for GBM and Heston                    #              
+#                      The code is both for GBM and Heston                    # 
+#       The code needs to be executed for all combinations of parameters      #
 # =========================================================================== #
 
 # parameters for American Option
@@ -593,8 +594,8 @@ my_training = {'N_path': int(10**5),
 #my_training = {'N_path': int(10**5), 
 #               'N_test': int(10**5), 
 #               'batch_size': int(10**3), 
-#               'N_neuron_1': [50, 25], 
-#               'N_neuron_2': [50, 50], 
+#               'N_neuron_1': [40, 40], 
+#               'N_neuron_2': [40, 40], 
 #               'val': 0.1,
 #               'patience': 5, 
 #               'max_epoch':100} 
@@ -648,7 +649,7 @@ for sub_steps in [1]:
 
             start1 = time.time()
             
-            # Heston
+            # Heston 
             #model_conti = Network(2, my_training['N_neuron_1'], 1)
             #model_mg = Network(2, my_training['N_neuron_2'], 4)
             
