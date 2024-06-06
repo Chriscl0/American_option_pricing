@@ -8,7 +8,7 @@ from scipy.stats import norm
 
 class Heston_model:
     """
-    Class to simulate option pricing using the Heston model via the Least Squares Monte Carlo (LSM) algorithm.
+    Class to simulate paths for the Heston model and getting a lower and upper bound for the option price using LSM and Delta LSM
     """
     def __init__(self, kappa, theta, rho):
         """
@@ -114,7 +114,7 @@ class Heston_model:
     
     def Heston_Delta_LSM(self, S, V, r, T, K, n):
         """
-        Calculate the option price using the Least Squares Monte Carlo (LSM) algorithm with polynomial regression for backward recursion.
+        Calculate the option price using the Delta LSM algorithm with polynomial regression for backward recursion.
 
         Parameters:
         - S: Simulated stock prices
@@ -192,7 +192,7 @@ class Heston_model:
     
     def Heston_Delta_LSM_backup(self, S, V, r, T, K, n):
         """
-        Calculate the option price using the Least Squares Monte Carlo (LSM) algorithm with polynomial regression for backward recursion.
+        Calculate the option price using the Delta LSM algorithm with polynomial regression for backward recursion.
 
         Parameters:
         - S: Simulated stock prices
@@ -307,7 +307,7 @@ class Heston_model:
     
     def Dual_LSM(self, S, V, strike, r,  sigma, option_type, nested_sim_n, T, n, reg_coef):
         """
-        strike: Strike price
+        strike: Strike 
         paths_dual: The simulated paths used for the dual LSM
         r: Short-term interest rate
         sigma: Volatility 
